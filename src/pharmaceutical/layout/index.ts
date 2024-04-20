@@ -1,0 +1,2 @@
+export { PharmaceuticalLayout } from "./PharmaceuticalLayout";
+
