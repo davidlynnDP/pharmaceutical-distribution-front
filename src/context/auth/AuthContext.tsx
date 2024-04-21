@@ -4,7 +4,6 @@ import { User } from '../../domain/models';
 
 
 enum AuthStatus {
-    Checking = 'checking',
     NotAuthenticated = 'not-authenticated',
     Authenticated = 'authenticated',
 }

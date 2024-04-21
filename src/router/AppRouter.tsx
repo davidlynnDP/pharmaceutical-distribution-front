@@ -4,7 +4,6 @@ import { PharmaceuticalRoutes } from "../pharmaceutical/routes";
 import { useCheckAuth } from "../hooks";
 
 enum AuthStatus {
-  Checking = 'checking',
   NotAuthenticated = 'not-authenticated',
   Authenticated = 'authenticated',
 }

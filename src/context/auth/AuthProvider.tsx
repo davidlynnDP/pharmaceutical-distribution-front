@@ -7,7 +7,6 @@ import { PharmaRenderAuthRepositoyImpl } from '../../infrastructure/repositories
 import { User } from '../../domain/models';
 
 enum AuthStatus {
-    Checking = 'checking',
     NotAuthenticated = 'not-authenticated',
     Authenticated = 'authenticated',
 }
@@ -25,7 +24,7 @@ const AUTH_INITIAL_STATE: AuthState = {
         isActive: false,
         token: ''
     },
-    status: AuthStatus.Checking,
+    status: AuthStatus.NotAuthenticated,
 };
 
 

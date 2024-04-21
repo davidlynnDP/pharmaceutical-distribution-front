@@ -1,7 +1,6 @@
 import { AuthState } from './AuthProvider';
 
 enum AuthStatus {
-    Checking = 'checking',
     NotAuthenticated = 'not-authenticated',
     Authenticated = 'authenticated',
 }
