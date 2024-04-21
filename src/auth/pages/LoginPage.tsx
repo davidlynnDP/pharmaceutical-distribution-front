@@ -35,54 +35,48 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout>
-      {
-        isLoading ? (
-          <div className="loading">Loading...</div>
-        ) : (
+      <div>
+        <h2>Iniciar Sesión</h2>
+        <form onSubmit={ handleSubmit }>
           <div>
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={ handleSubmit }>
-              <div>
-                <label htmlFor="email">Email:</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  {...getFieldProps("email")} 
-                />
-                { touched.email && errors.email ? <div className="error-message">{ errors.email }</div> : null }
-              </div>
-              <div>
-                <label htmlFor="password">Contraseña:</label>
-                <input 
-                  type="password" 
-                  id="password" 
-                  {...getFieldProps("password")} 
-                />
-                { touched.password && errors.password ? <div className="error-message">{ errors.password }</div> : null }
-              </div>
-              <div>
-                <button 
-                  type="submit" 
-                  disabled={ isLoading } >
-                  { isLoading ? "Cargando..." : "Iniciar Sesión" }
-                </button>
-                <button 
-                  type="button" 
-                  onClick={() => resetForm()} 
-                  disabled={ isLoading } >
-                  Limpiar
-                </button>
-              </div>
-            </form>
-
-            <div>
-              <p>¿No tienes una cuenta? 
-                <Link to="/auth/sign-up">Regístrate aquí</Link>
-              </p>
-            </div>
+            <label htmlFor="email">Email:</label>
+            <input 
+              type="email" 
+              id="email" 
+              {...getFieldProps("email")} 
+            />
+            { touched.email && errors.email ? <div>{ errors.email }</div> : null }
           </div>
-        )
-      }
+          <div>
+            <label htmlFor="password">Contraseña:</label>
+            <input 
+              type="password" 
+              id="password" 
+              {...getFieldProps("password")} 
+            />
+            { touched.password && errors.password ? <div>{ errors.password }</div> : null }
+          </div>
+          <div>
+            <button 
+              type="submit" 
+              disabled={ isLoading } >
+              "Iniciar Sesión"
+            </button>
+            <button 
+              type="button" 
+              onClick={() => resetForm()} 
+              disabled={ isLoading } >
+              Limpiar
+            </button>
+          </div>
+        </form>
+        
+        <div>
+          <p>¿No tienes una cuenta? 
+            <Link to="/auth/sign-up">Regístrate aquí</Link>
+          </p>
+        </div>
+      </div>
     </AuthLayout>
   )
   
