@@ -29,11 +29,11 @@ const AUTH_INITIAL_STATE: AuthState = {
 
 
 
-interface AuthLayoutProps {
+interface AuthProviderProps {
     children: ReactNode;
 }
 
-export const AuthProvider: FC<AuthLayoutProps> = ({ children }) => {
+export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     const [ state, dispatch ] = useReducer( authReducer, AUTH_INITIAL_STATE );
     const authRepository: AuthRepository = new PharmaRenderAuthRepositoyImpl();

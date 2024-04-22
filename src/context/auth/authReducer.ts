@@ -13,7 +13,7 @@ type AuthActionType =
     | { type: '[Auth] - Delete User', payload: AuthState }
     | { type: '[Auth] - Logout' };
 
-    export const authReducer = (state: AuthState, action: AuthActionType): AuthState => {
+export const authReducer = (state: AuthState, action: AuthActionType): AuthState => {
         
         switch ( action.type ) {
             case '[Auth] - Sign In':

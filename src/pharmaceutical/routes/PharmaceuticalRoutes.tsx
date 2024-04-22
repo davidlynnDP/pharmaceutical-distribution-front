@@ -2,10 +2,12 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { SummaryPage, ProductsPage, SuppliersPage, ClientsPage, SalesPage, ProductDetailsPage, NewProductPage, SupplierDetailsPage, NewSupplierPage, ClientDetailsPage, NewClientPage, SaleDetailsPage, NewSalePage  } from "../pages"
 
 
+
 export const PharmaceuticalRoutes = () => {
 
   return (
     <Routes>
+      
       <Route 
         path="/" 
         element={ <SummaryPage /> } 
@@ -36,7 +38,7 @@ export const PharmaceuticalRoutes = () => {
       </Route>
 
       <Route path="/*" element={ <Navigate to="/" /> } />
+
     </Routes>
   )
-  
 }

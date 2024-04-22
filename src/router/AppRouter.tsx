@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AuthRoutes } from "../auth/routes";
 import { PharmaceuticalRoutes } from "../pharmaceutical/routes";
 import { useCheckAuth } from "../hooks";
@@ -21,8 +21,6 @@ export const AppRouter = () => {
           <Route path="/auth/*" element={ <AuthRoutes /> } />
         )
       }
-
-      <Route path='/*' element={ <Navigate to='/auth/login' />  } />
     </Routes>
   );
 }
