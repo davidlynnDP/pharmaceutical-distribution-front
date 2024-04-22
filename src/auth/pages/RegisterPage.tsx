@@ -23,7 +23,6 @@ export const RegisterPage = () => {
     onSubmit: async( values ) => {
       await handleSignUp({ email: values.email, password: values.password, username: values.username });
       navigate('/');
-      console.log(values);
     },
     validationSchema: Yup.object({
       username: Yup.string()

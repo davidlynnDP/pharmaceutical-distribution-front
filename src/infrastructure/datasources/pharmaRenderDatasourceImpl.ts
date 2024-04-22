@@ -17,8 +17,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 phone
             });
 
-            console.log( response.data );
-
             return response.data;
         } catch (error) {
             console.log( error );
@@ -38,8 +36,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 },
             });
 
-            console.log( response.data );
-
             return response.data;
         } catch (error) {
             console.log( error );
@@ -50,8 +46,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
     async findClientById(id: string): Promise<Client> {
         try {
             const response = await pharmaApi.get<Client>(`/clients/find/${ id }`);
-
-            console.log( response.data );
 
             return response.data;
         } catch (error) {
@@ -70,8 +64,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 name, 
                 phone
             });
-
-            console.log( response.data );
 
             return response.data;
         } catch (error) {
@@ -108,8 +100,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 postalCode
             });
 
-            console.log(response.data);
-
             return response.data;
         } catch (error) {
             console.log(error);
@@ -129,8 +119,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 },
             });
 
-            console.log(response.data);
-
             return response.data;
         } catch (error) {
             console.log(error);
@@ -141,8 +129,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
     async findSupplierById(id: string): Promise<Supplier> {
         try {
             const response = await pharmaApi.get<Supplier>(`/suppliers/find/${ id }`);
-
-            console.log(response.data);
 
             return response.data;
         } catch (error) {
@@ -169,8 +155,6 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 country,
                 postalCode
             });
-
-            console.log(response.data);
 
             return response.data;
         } catch (error) {
@@ -202,9 +186,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 price, 
                 stocks
             });
-      
-            console.log(response.data);
-      
+            
             return response.data;
           } catch (error) {
             console.log(error);
@@ -223,9 +205,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 offset,
               },
             });
-      
-            console.log(response.data);
-      
+            
             return response.data;
           } catch (error) {
             console.log(error);
@@ -237,9 +217,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
 
         try {
             const response = await pharmaApi.get<Product>(`/products/find/${ id }`);
-      
-            console.log(response.data);
-      
+            
             return response.data;
         } catch (error) {
             console.log(error);
@@ -264,9 +242,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
               deletePrevious,
               supplier,
             });
-      
-            console.log(response.data);
-      
+            
             return response.data;
           } catch (error) {
             console.log(error);
@@ -293,9 +269,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
             const response = await pharmaApi.post<Sale>(`/sales/create?client=${ client }`, {
               items,
             });
-      
-            console.log(response.data);
-      
+            
             return response.data;
           } catch (error) {
             console.log(error);
@@ -314,9 +288,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
                 offset,
               },
             });
-      
-            console.log(response.data);
-      
+            
             return response.data;
           } catch (error) {
             console.log(error);
@@ -328,9 +300,7 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
         
         try {
             const response = await pharmaApi.get<Sale>(`/sales/find/${ id }`);
-      
-            console.log(response.data);
-      
+            
             return response.data;
           } catch (error) {
             console.log(error);

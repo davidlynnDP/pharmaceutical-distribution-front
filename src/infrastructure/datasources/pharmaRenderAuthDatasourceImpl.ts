@@ -19,10 +19,8 @@ export class PharmaRenderAuthDatasourceImpl implements AuthDataSource {
 
             localStorage.setItem('token', response.data.token );
             localStorage.setItem('tokenIssuedAt', dateTimeNow );
-
-            console.log( response );
             
-            return response.data as User;
+            return response.data;
         } catch ( error ) {
             console.log(error);
             throw error;
@@ -41,8 +39,6 @@ export class PharmaRenderAuthDatasourceImpl implements AuthDataSource {
             localStorage.setItem('token', response.data.token );
             localStorage.setItem('tokenIssuedAt', dateTimeNow );
 
-            console.log( response );
-
             return response.data;
         } catch ( error ) {
             console.log(error);
@@ -57,8 +53,6 @@ export class PharmaRenderAuthDatasourceImpl implements AuthDataSource {
             localStorage.setItem('token', response.data.token );
             localStorage.setItem('tokenIssuedAt', dateTimeNow );
 
-            console.log( response );
-
             return response.data;
         } catch ( error ) {
             console.log(error);
@@ -69,8 +63,6 @@ export class PharmaRenderAuthDatasourceImpl implements AuthDataSource {
     async findUserById( id: string ): Promise<User> {
         try {
             const response = await pharmaApi.get<User>(`/auth/find/${ id }`);
-
-            console.log( response );
 
             return response.data;
         } catch ( error ) {
@@ -86,8 +78,6 @@ export class PharmaRenderAuthDatasourceImpl implements AuthDataSource {
                 email: email,
             });
 
-            console.log( response );
-
             return response.data
         } catch ( error ) {
             console.log(error);
@@ -98,8 +88,6 @@ export class PharmaRenderAuthDatasourceImpl implements AuthDataSource {
     async deleteUser( id: string ): Promise<User> {
         try {
             const response = await pharmaApi.delete<User>(`/auth/${ id }`);
-
-            console.log( response );
 
             return response.data
         } catch ( error ) {

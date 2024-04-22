@@ -22,7 +22,6 @@ export const LoginPage = () => {
     onSubmit: async( values ) => {
       await handleSignIn({ email: values.email, password: values.password });
       navigate('/');
-      console.log( values );
     },
     validationSchema: Yup.object({
       email: Yup.string()
