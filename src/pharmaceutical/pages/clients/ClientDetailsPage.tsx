@@ -54,6 +54,7 @@ export const ClientDetailsPage = () => {
     if ( !client ) return;
     try {
       await handleDeleteClient( client.id );
+      navigate('/clients');
     } catch (error) {
       console.log( error );
     }

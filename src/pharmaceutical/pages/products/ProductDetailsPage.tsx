@@ -72,6 +72,7 @@ export const ProductDetailsPage = () => {
     if ( !product ) return;
     try {
       await handleDeleteProduct( product.id );
+      navigate('/products');
     } catch (error) {
       console.log( error );
     }

@@ -60,6 +60,7 @@ export const SupplierDetailsPage = () => {
     if ( !supplier ) return;
     try {
       await handleDeleteSupplier( supplier.id );
+      navigate('/suppliers');
     } catch (error) {
       console.log( error );
     }
