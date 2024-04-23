@@ -42,6 +42,9 @@ export const SalesPage = () => {
         <div>
           <div>
             <div>
+              <h3>Total Sales Value: ${ totalSales }</h3>
+            </div>
+            <div>
               <Link to="/sales/new" className="create-sale-button">
                 Create New Sale
               </Link>
@@ -59,9 +62,6 @@ export const SalesPage = () => {
                   </Link>
                 </div>
               ))}
-            </div>
-            <div>
-              <h3>Total Sales Value: ${ totalSales }</h3>
             </div>
           </div>
         </div>

@@ -56,8 +56,9 @@ export const useCheckInformation = () => {
 
     const handleFindClientById = async (id: string) => {
         setIsLoading(true);
-        await findClientById(id);
+        const client = await findClientById(id);
         setIsLoading(false);
+        return client;
     };
 
     const handleUpdateClient = async (id: string, updateClientParams: UpdateClientParams) => {
@@ -86,8 +87,9 @@ export const useCheckInformation = () => {
 
     const handleFindSupplierById = async (id: string) => {
         setIsLoading(true);
-        await findSupplierById(id);
+        const supplier = await findSupplierById(id);
         setIsLoading(false);
+        return supplier;
     };
 
     const handleUpdateSupplier = async (id: string, updateSupplierParams: UpdateSupplierParams) => {
@@ -116,8 +118,9 @@ export const useCheckInformation = () => {
 
     const handleFindProductById = async (id: string) => {
         setIsLoading(true);
-        await findProductById(id);
+        const product = await findProductById(id);
         setIsLoading(false);
+        return product;
     };
 
     const handleUpdateProduct = async (id: string, updateProductParams: UpdateProductParams, updateProductQuery: UpdateProductQuery) => {
@@ -146,8 +149,9 @@ export const useCheckInformation = () => {
 
     const handleFindSaleById = async (id: string) => {
         setIsLoading(true);
-        await findSaleById(id);
+        const sale = await findSaleById(id);
         setIsLoading(false);
+        return sale;
     };
 
     return {

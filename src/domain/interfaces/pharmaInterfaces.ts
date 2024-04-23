@@ -38,7 +38,7 @@ export interface CreateProductParams {
     description: string;
     stocks: number;
     price: number;
-    files: File[]; //jpg|png|jpeg
+    files: FileList; //jpg|png|jpeg
 }
 
 export interface CreateProductQuery {
@@ -50,7 +50,7 @@ export interface UpdateProductParams {
     description?: string;
     stocks?: number;
     price?: number;
-    files?: File[]; //jpg|png|jpeg
+    files?: FileList; //jpg|png|jpeg
 }
 
 export interface UpdateProductQuery {
