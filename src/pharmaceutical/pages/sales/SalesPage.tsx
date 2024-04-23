@@ -4,7 +4,7 @@ import { PharmaceuticalLayout } from '../../layout'
 import { useEffect, useState } from 'react';
 import { Sale, SaleDetail } from '../../../domain/models';
 
-
+import './SalesPage.css';
 
 
 export const SalesPage = () => {

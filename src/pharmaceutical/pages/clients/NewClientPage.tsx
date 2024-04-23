@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 
-
+import './NewClientPage.css';
 
 export const NewClientPage = () => {
 
@@ -24,7 +24,7 @@ export const NewClientPage = () => {
         phone: values.phone,
         email: values.email
       });
-      //navigate
+      navigate('/clients');
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -98,6 +98,9 @@ export const NewClientPage = () => {
             Reset
           </button>
         </form>
+        <Link to="/clients">
+          Back to Clients
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useCheckInformation } from "../../../hooks"
 import { PharmaceuticalLayout } from "../../layout"
 
+import './ClientsPage.css';
 
 export const ClientsPage = () => {
 

@@ -1,10 +1,11 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 
+import './NewSalePage.css';
 
 
 interface Item {
@@ -29,7 +30,7 @@ export const NewSalePage = () => {
       await handleCreateSale({
         items: values.items
       }, { client: values.clientId });
-      //navigate
+      navigate('/sales');
     } catch (error) {
       console.log( error );
     }
@@ -149,6 +150,9 @@ export const NewSalePage = () => {
             </button>
           </div>
         </form>
+        <Link to="/sales">
+          Back to Sales
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

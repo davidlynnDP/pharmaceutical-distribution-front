@@ -1,9 +1,12 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
+
+
+import './NewSupplierPage.css';
 
 
 interface Values {
@@ -40,7 +43,7 @@ export const NewSupplierPage = () => {
         country: values.country,
         postalCode: values.postalCode,
       });
-      //navigate
+      navigate('/suppliers');
     },
     validationSchema: Yup.object({
       phone: Yup.string()
@@ -158,6 +161,9 @@ export const NewSupplierPage = () => {
             </button>
           </div>
         </form>
+        <Link to="/suppliers">
+          Back to Suppliers
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
@@ -7,6 +7,7 @@ import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 import { Client } from "../../../domain/models";
 
+import './ClientDetailsPage.css';
 
 interface Values {
   name: string;
@@ -42,6 +43,7 @@ export const ClientDetailsPage = () => {
         phone: values.phone,
         email: values.email
       });
+      navigate('/clients');
     } catch (error) {
       console.log( error );
     }
@@ -143,6 +145,9 @@ export const ClientDetailsPage = () => {
             </button>
           </div>
         </form>
+        <Link to="/clients">
+          Back to Clients
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

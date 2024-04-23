@@ -2,6 +2,8 @@ import { FC, ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCheckAuth } from "../../hooks";
 
+import './PharmaceuticalLayout.css';
+
 interface NavItem {
   path: string;
   text: string;

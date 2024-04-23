@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 
-
+import './SummaryPage.css';
 
 export const SummaryPage = () => {
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 
-
+import './ProductsPage.css';
 
 export const ProductsPage = () => {
 

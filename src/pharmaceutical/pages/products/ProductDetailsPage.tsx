@@ -1,11 +1,13 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 import { Product } from "../../../domain/models";
 import { useEffect, useState } from "react";
+
+import './ProductDetailsPage.css';
 
 //NOTA: únicamente se aceptan imágenes de máximo 4 megabytes y con las extensiones jpg|png|jpeg
 
@@ -59,7 +61,7 @@ export const ProductDetailsPage = () => {
         price: Number( values.price ),
         files: values.files,
       }, { supplier: values.supplierId, deletePrevious: values.deletePrevious });
-      //navigate
+      navigate('/products');
     } catch (error) {
       console.log( error );
     }
@@ -306,6 +308,9 @@ export const ProductDetailsPage = () => {
             </button>
           </div>
         </form>
+        <Link to="/products">
+          Back to Products
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Sale, SaleDetail } from "../../../domain/models";
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 
+import './SaleDetailsPage.css';
 
 const SaleNotFound = () => {
   return <div>Sale not found!</div>;
@@ -14,7 +15,6 @@ const SaleNotFound = () => {
 export const SaleDetailsPage = () => {
 
   const { saleId } = useParams<{ saleId: string }>();
-  const navigate = useNavigate();
   const { sales } = useCheckInformation();
   const [ sale, setSale ] = useState<Sale | undefined>(undefined);
 
@@ -84,6 +84,9 @@ export const SaleDetailsPage = () => {
             <strong>Total:</strong> ${ calculateTotalSingleSale( sale.saleDetails ) }
           </div>
         </div>
+        <Link to="/sales">
+          Back to Sales
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

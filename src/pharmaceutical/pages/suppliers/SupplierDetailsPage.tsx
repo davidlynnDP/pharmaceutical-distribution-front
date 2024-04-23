@@ -1,11 +1,13 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 import { Supplier } from "../../../domain/models";
 import { useEffect, useState } from "react";
+
+import './SupplierDetailsPage.css';
 
 interface Values {
   phone: string;
@@ -47,7 +49,7 @@ export const SupplierDetailsPage = () => {
         country: values.country,
         postalCode: values.postalCode,
       });
-      //navigate
+      navigate('/suppliers');
     } catch (error) {
       console.log( error );
     }
@@ -203,6 +205,9 @@ export const SupplierDetailsPage = () => {
             </button>
           </div>
         </form>
+        <Link to="/suppliers">
+          Back to Suppliers
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

@@ -1,9 +1,11 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
+
+import './NewProductPage.css';
 
 //NOTA: únicamente se aceptan imágenes de máximo 4 megabytes y con las extensiones jpg|png|jpeg
 
@@ -42,7 +44,7 @@ export const NewProductPage = () => {
         price: Number( values.price ),
         files: values.files,
       }, { supplier: values.supplierId });
-      //navigate
+      navigate('/products');
     } catch (error) {
       console.log( error );
     }
@@ -223,6 +225,9 @@ export const NewProductPage = () => {
             </button>
           </div>
         </form>
+        <Link to="/products">
+          Back to Products
+        </Link>
       </div>
     </PharmaceuticalLayout>
   )

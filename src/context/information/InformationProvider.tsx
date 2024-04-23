@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useReducer } from "react";
+import { FC, ReactNode, useEffect, useReducer, useState } from "react";
 import { Client, Product, Sale, Supplier } from "../../domain/models";
 import { PharmaRepository } from "../../domain/repositories";
 import { PharmaRenderRepositoryImpl } from "../../infrastructure/repositories/pharmaRenderRepositoryImpl";
@@ -33,7 +33,6 @@ const INFORMATION_INITIAL_STATE: InformationState = {
     sales: [],
 };
 
-
 interface InformationProviderProps {
     children: ReactNode;
 }
@@ -42,6 +41,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
 
     const [ state, dispatch ] = useReducer( informationReducer, INFORMATION_INITIAL_STATE );
     const pharmaRepository: PharmaRepository = new PharmaRenderRepositoryImpl();
+    const [ refreshCounter, setRefreshCounter ] = useState(0);
 
     useEffect(() => {
         findAllClients({ limit: 10, offset: 0 });
@@ -50,10 +50,18 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         findAllSales({ limit: 10, offset: 0 });
     }, []);
 
+    useEffect(() => {
+      findAllClients({ limit: 10, offset: 0 });
+      findAllSuppliers({ limit: 10, offset: 0 });
+      findAllProducts({ limit: 10, offset: 0 });
+      findAllSales({ limit: 10, offset: 0 });
+    }, [ refreshCounter ]);
+
     const createClient = async(createClientParams: CreateClientParams): Promise<Client> => {
         try {
           const client = await pharmaRepository.createClient(createClientParams);
           dispatch({ type: '[Information] - Create Client', payload: client });
+          setRefreshCounter(prev => prev + 1); 
           return client;
         } catch (error) {
             console.log(error);
@@ -85,6 +93,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           const client = await pharmaRepository.updateClient(id, updateClientParams);
           dispatch({ type: '[Information] - Update Client', payload: client });
+          setRefreshCounter(prev => prev + 1); 
           return client;
         } catch (error) {
             console.log(error);
@@ -96,6 +105,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           await pharmaRepository.deleteClient(id);
           dispatch({ type: '[Information] - Delete Client', payload: id });
+          setRefreshCounter(prev => prev + 1); 
         } catch (error) {
             console.log(error);
             throw error;
@@ -106,6 +116,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           const supplier = await pharmaRepository.createSupplier(createSupplierParams);
           dispatch({ type: '[Information] - Create Supplier', payload: supplier });
+          setRefreshCounter(prev => prev + 1); 
           return supplier;
         } catch (error) {
             console.log(error);
@@ -137,6 +148,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           const supplier = await pharmaRepository.updateSupplier(id, updateSupplierParams);
           dispatch({ type: '[Information] - Update Supplier', payload: supplier });
+          setRefreshCounter(prev => prev + 1); 
           return supplier;
         } catch (error) {
             console.log(error);
@@ -148,6 +160,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           await pharmaRepository.deleteSupplier(id);
           dispatch({ type: '[Information] - Delete Supplier', payload: id });
+          setRefreshCounter(prev => prev + 1); 
         } catch (error) {
             console.log(error);
             throw error;
@@ -158,6 +171,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           const product = await pharmaRepository.createProduct(createProductParams, createProductQuery);
           dispatch({ type: '[Information] - Create Product', payload: product });
+          setRefreshCounter(prev => prev + 1); 
           return product;
         } catch (error) {
             console.log(error);
@@ -189,6 +203,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           const product = await pharmaRepository.updateProduct(id, updateProductParams, updateProductQuery);
           dispatch({ type: '[Information] - Update Product', payload: product });
+          setRefreshCounter(prev => prev + 1); 
           return product;
         } catch (error) {
             console.log(error);
@@ -200,6 +215,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           await pharmaRepository.deleteProduct(id);
           dispatch({ type: '[Information] - Delete Product', payload: id });
+          setRefreshCounter(prev => prev + 1); 
         } catch (error) {
             console.log(error);
             throw error;
@@ -210,6 +226,7 @@ export const InformationProvider: FC<InformationProviderProps> = ({ children }) 
         try {
           const sale = await pharmaRepository.createSale(createSaleParams, createSaleQuery);
           dispatch({ type: '[Information] - Create Sale', payload: sale });
+          setRefreshCounter(prev => prev + 1); 
           return sale; 
         } catch (error) {
             console.log(error);
