@@ -158,7 +158,40 @@ export const ProductDetailsPage = () => {
   return (
     <PharmaceuticalLayout>
       <div>
-        <h2>Product Details</h2>
+        <div>
+          <h2>Product Details</h2>
+          <div>
+            <strong>ID:</strong> { product.id }
+          </div>
+          <div>
+            <strong>Name:</strong> { product.name }
+          </div>
+          <div>
+            <strong>Slug:</strong> { product.slug }
+          </div>
+          <div>
+            <strong>Description:</strong> { product.description }
+          </div>
+          <div>
+            <strong>Stocks:</strong> { product.stocks }
+          </div>
+          <div>
+            <strong>Price:</strong> ${ product.price }
+          </div>
+          <div>
+            <strong>Supplier:</strong> ({ product.supplier.email })
+          </div>
+          <div>
+            <strong>Images:</strong>
+            {
+              product.images.map(({ id, url }) => (
+                <div key={ id }>
+                  <img src={ url } alt={`Image ${ id }`} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
         <form onSubmit={ handleSubmit }>
           <div>
             <label htmlFor="name">Name:</label>
