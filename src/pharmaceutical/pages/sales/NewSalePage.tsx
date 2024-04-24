@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 
-import './NewSalePage.css';
+import styles from './NewSalePage.module.css';
 
 
 interface Item {
@@ -70,20 +70,21 @@ export const NewSalePage = () => {
 
   return (
     <PharmaceuticalLayout>
-      <div>
-        <h2>New Sale</h2>
-        <form onSubmit={ handleSubmit }>
+      <div className={ styles.new__sale__container }>
+        <h2 className={ styles.title__page }>New Sale</h2>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
           { values.items.map((_, index) => (
-            <div key={ index }>
-              <label htmlFor={`items[${ index }].productId`}>Product:</label>
+            <div key={ index } className={ styles.form__product }>
+              <label htmlFor={`items[${ index }].productId`} className={ styles.product_t }>Product:</label>
               <select
-                id={`items[${ index }].productId`}
+                id={`items[${ index }].productId`} 
+                className={ styles.input__select }
                 {...getFieldProps(`items[${ index }].productId`)}
               >
-                <option value="">Select Product</option>
+                <option value="" className={ styles.select__opt }>Select Product</option>
                 {
                   products.map(product => (
-                    <option key={ product.id } value={ product.id }>
+                    <option key={ product.id } value={ product.id } className={ styles.select__opt }>
                       { product.name }
                     </option>
                 ))}
@@ -93,10 +94,11 @@ export const NewSalePage = () => {
                   <div>{ errors.items[index].productId }</div>
               )} */}
 
-              <label htmlFor={`items[${ index }].quantity`}>Quantity:</label>
+              <label htmlFor={`items[${ index }].quantity`} className={ styles.quantity__t }>Quantity:</label>
               <input
                 type="text"
-                id={`items[${ index }].quantity`}
+                id={`items[${ index }].quantity`} 
+                className={ styles.input }
                 {...getFieldProps(`items[${ index }].quantity`)}
               />
               {/* { 
@@ -107,7 +109,7 @@ export const NewSalePage = () => {
 
               {
                 index > 0 && ( 
-                <button type="button" onClick={() => removeItem(index)}>
+                <button type="button" className={ styles.btn__remove } onClick={() => removeItem(index)}>
                   Remove
                 </button>
               )}
@@ -115,20 +117,21 @@ export const NewSalePage = () => {
           
           ))}
 
-          <button type="button" onClick={ addNewItem }>
+          <button type="button" onClick={ addNewItem } className={ styles.btn__add }>
             Add Product
           </button>
 
-          <div>
-            <label htmlFor="clientId">Client:</label>
+          <div className={ styles.client__cont }>
+            <label htmlFor="clientId" className={ styles.client__title }>Client:</label>
             <select
-              id="clientId"
+              id="clientId" 
+              className={ styles.input__select }
               {...getFieldProps("clientId")}
             >
-              <option value="">Select Client</option>
+              <option value="select__opt" className={ styles.select__opt }>Select Client</option>
               {
                 clients.map( client => (
-                  <option key={ client.id } value={ client.id }>
+                  <option className={ styles.select__opt } key={ client.id } value={ client.id }>
                     { client.name }
                   </option>
                 ))
@@ -136,21 +139,21 @@ export const NewSalePage = () => {
             </select>
             { 
               touched.clientId &&  errors.clientId && (
-                <div>{ errors.clientId }</div>
+                <div className={ styles.input__errors }>{ errors.clientId }</div>
               )
             }
           </div>
 
-          <div>
-            <button type="submit" disabled={isLoading}>
+          <div className={ styles.btn__cont }>
+            <button type="submit" disabled={isLoading} className={ styles.btn__sale }>
               Create Sale
             </button>
-            <button type="button" onClick={() => resetForm()} disabled={ isLoading }>
+            <button className={ styles.btn__sale } type="button" onClick={() => resetForm()} disabled={ isLoading }>
               Reset
             </button>
           </div>
         </form>
-        <Link to="/sales">
+        <Link to="/sales" className={ styles.btn__back__sales }>
           Back to Sales
         </Link>
       </div>

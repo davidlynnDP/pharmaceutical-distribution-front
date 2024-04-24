@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../layout";
 import { useCheckAuth } from "../../hooks";
 
-import './LoginPage.css';
+import styles from './LoginPage.module.css';
 
 
 
@@ -34,45 +34,48 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout>
-      <div>
-        <h2>Iniciar Sesión</h2>
-        <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="email">Email:</label>
+      <div className={ styles.login__container }>
+        <h2 className={ styles.title__page }>Iniciar Sesión</h2>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
+          <div className={ styles.container__input }>
+            <label htmlFor="email" className={ styles.input__name }>Email:</label>
             <input 
               type="email" 
               id="email" 
+              className={ styles.input__text }
               {...getFieldProps("email")} 
             />
-            { touched.email && errors.email ? <div>{ errors.email }</div> : null }
+            { touched.email && errors.email ? <div className={ styles.input__error }>{ errors.email }</div> : null }
           </div>
-          <div>
-            <label htmlFor="password">Contraseña:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="password" className={ styles.input__name }>Contraseña:</label>
             <input 
               type="password" 
               id="password" 
+              className={ styles.input__text }
               {...getFieldProps("password")} 
             />
-            { touched.password && errors.password ? <div>{ errors.password }</div> : null }
+            { touched.password && errors.password ? <div className={ styles.input__error }>{ errors.password }</div> : null }
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button 
               type="submit" 
+              className={ styles.btn }
               disabled={ isLoading } >
-              "Iniciar Sesión"
+              Iniciar Sesión
             </button>
             <button 
               type="button" 
               onClick={() => resetForm()} 
+              className={ styles.btn }
               disabled={ isLoading } >
               Limpiar
             </button>
           </div>
         </form>
-        
-        <div>
-          <p>¿No tienes una cuenta? 
-            <Link to="/auth/sign-up">Regístrate aquí</Link>
+        <div className={ styles.link__container }>
+          <p className={ styles.paragraph__text }>¿No tienes una cuenta? 
+            <Link to="/auth/sign-up" className={ styles.paragraph__text__link }>Regístrate aquí</Link>
           </p>
         </div>
       </div>

@@ -1,0 +1,84 @@
+/* ClientsPage.module.css */
+
+/* Estilos para el contenedor principal */
+.clients__container {
+  padding: 20px;
+}
+
+.title__page {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cards__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo para el enlace de creación de nuevo producto */
+.container__link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn__new {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn__new:hover {
+  background-color: #218838;
+}
+
+.cards__client {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 25px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.name__client {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.id__client,
+.phone__client,
+.email__client,
+.date__client {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.btn__edit {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn__edit:hover {
+  background-color: #0056b3;
+}

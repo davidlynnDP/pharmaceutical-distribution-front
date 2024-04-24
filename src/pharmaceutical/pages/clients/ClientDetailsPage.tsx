@@ -7,7 +7,7 @@ import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 import { Client } from "../../../domain/models";
 
-import './ClientDetailsPage.css';
+import styles from './ClientDetailsPage.module.css';
 
 interface Values {
   name: string;
@@ -16,7 +16,7 @@ interface Values {
 }
 
 const ClientNotFound = () => {
-  return <div>Client not found!</div>;
+  return <div className={ styles.client__not__found }>Client not found!</div>;
 };
 
 
@@ -84,69 +84,69 @@ export const ClientDetailsPage = () => {
 
   return (
     <PharmaceuticalLayout>
-      <div>
-        <h2>Edit Client</h2>
-        <div>
-          <p>ID: { client.id }</p>
-          <p>Name: { client.name }</p>
-          <p>Phone: { client.phone }</p>
-          <p>Email: { client.email }</p>
+      <div className={ styles.client__container }>
+        <h2 className={ styles.title__page }>Edit Client</h2>
+        <div className={ styles.info__client__container }>
+          <p className={ styles.id__client }>ID: { client.id }</p>
+          <p className={ styles.name__client }>Name: { client.name }</p>
+          <p className={ styles.phone__client }>Phone: { client.phone }</p>
+          <p className={ styles.email__client }>Email: { client.email }</p>
         </div>
-        <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="name">Name:</label>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
+          <div className={ styles.container__input }>
+            <label htmlFor="name" className={ styles.input__text }>Name:</label>
             <input
               type="text"
-              id="name"
+              id="name" className={ styles.input }
               {...getFieldProps("name")}
             />
             {
               touched.name && errors.name && (
-                <div>{ errors.name }</div>
+                <div className={ styles.input__errors }>{ errors.name }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="phone">Phone:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="phone" className={ styles.input__text }>Phone:</label>
             <input
               type="text"
-              id="phone"
+              id="phone" className={ styles.input }
               {...getFieldProps("phone")}
             />
             {
               touched.phone && errors.phone && (
-                <div>{ errors.phone }</div>
+                <div className={ styles.input__errors }>{ errors.phone }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="email" className={ styles.input__text }>Email:</label>
             <input
               type="email"
-              id="email"
+              id="email" className={ styles.input }
               {...getFieldProps("email")}
             />
             {
               touched.email && errors.email && (
-                <div>{ errors.email }</div>
+                <div className={ styles.input__errors }>{ errors.email }</div>
               )
             }
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button 
-              type="submit"
+              type="submit" className={ styles.btn }
               disabled={ isLoading }>
                 Update Client
             </button>
             <button 
-              type="button" 
+              type="button"  className={ styles.btn }
               onClick={ onDelete }
               disabled={ isLoading }>
                 Delete Client
             </button>
           </div>
         </form>
-        <Link to="/clients">
+        <Link to="/clients" className={ styles.back__to__clients }>
           Back to Clients
         </Link>
       </div>

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 
-import './SummaryPage.css';
+import styles from './SummaryPage.module.css';
+
 
 export const SummaryPage = () => {
 
@@ -26,32 +27,32 @@ export const SummaryPage = () => {
 
   return (
     <PharmaceuticalLayout>
-<div className="summary-container">
-        <h2>Summary Page</h2>
-        <div className="summary-stats">
-          <div className="stat-card">
-            <h3>Total Sales</h3>
-            <p>{ totalSales }</p>
+      <div className={ styles.summary__container }>
+        <h2 className={ styles.title__page }>Summary Page</h2>
+        <div className={ styles.stats__container }>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Total Sales</h3>
+            <p className={ styles.stat__value }>{ totalSales }</p>
           </div>
-          <div className="stat-card">
-            <h3>Total Products</h3>
-            <p>{ totalProducts }</p>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Total Products</h3>
+            <p className={ styles.stat__value }>{ totalProducts }</p>
           </div>
-          <div className="stat-card">
-            <h3>Total Clients</h3>
-            <p>{ totalClients }</p>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Total Clients</h3>
+            <p className={ styles.stat__value }>{ totalClients }</p>
           </div>
-          <div className="stat-card">
-            <h3>Total Suppliers</h3>
-            <p>{ totalSuppliers }</p>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Total Suppliers</h3>
+            <p className={ styles.stat__value }>{ totalSuppliers }</p>
           </div>
-          <div className="stat-card">
-            <h3>Products Out of Stock</h3>
-            <p>{ products.filter((product) => product.stocks === 0).length }</p>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Products Out of Stock</h3>
+            <p className={ styles.stat__value }>{ products.filter((product) => product.stocks === 0).length }</p>
           </div>
-          <div className="stat-card">
-            <h3>Average Price</h3>
-            <p>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Average Price</h3>
+            <p className={ styles.stat__value }>
               ${" "}
               {
                 products.length > 0
@@ -63,23 +64,9 @@ export const SummaryPage = () => {
               }
             </p>
           </div>
-          <div className="stat-card">
-            <h3>New Clients This Month</h3>
-            <p>
-              {
-                clients.filter(
-                  (client) =>
-                    new Date(client.registrationDate).getMonth() ===
-                      new Date().getMonth() &&
-                    new Date(client.registrationDate).getFullYear() ===
-                      new Date().getFullYear()
-                ).length
-              }
-            </p>
-          </div>
-          <div className="stat-card">
-            <h3>Top Selling Products</h3>
-            <ul>
+          <div className={ styles.stat__div }>
+            <h3 className={ styles.stat__title }>Top Selling Products</h3>
+            <ul className={ styles.stat__list }>
               {
                 sales.length > 0 ? (
                   Object.entries(
@@ -99,13 +86,14 @@ export const SummaryPage = () => {
                       const product = products.find((p) => p.id === productId);
                       const productName = product ? product.name : "Unknown Product";
                       return (
-                        <li key={index}>
-                          <strong>Product Name:</strong> {productName} | <strong>Quantity:</strong> {quantity}
+                        <li key={ index } className={ styles.stat__list__item }>
+                          <div className={ styles.product__name }>{ productName }</div>
+                          <div className={ styles.product__quantity }>Quantity: { quantity }</div>
                         </li>
                       );
                     })
                 ) : (
-                  <li>N/A</li>
+                  <li className={ styles.NA }>N/A</li>
                 )
               }
             </ul>

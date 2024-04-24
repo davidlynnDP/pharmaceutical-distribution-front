@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 
-import './SuppliersPage.css';
+import styles from './SuppliersPage.module.css';
+
 
 export const SuppliersPage = () => {
   
@@ -10,25 +11,26 @@ export const SuppliersPage = () => {
 
   return (
     <PharmaceuticalLayout>
-      <div>
-        <div>
-          <div>
-            <Link to="/suppliers/new">
+      <div className={ styles.suppliers__container }>
+        <h2 className={ styles.title__page }>Suppliers Page</h2>
+        <div className={ styles.cards__container }>
+          <div className={ styles.container__link }>
+            <Link to="/suppliers/new" className={ styles.btn__new }>
               Create New Supplier
             </Link>
           </div>
-          <div>
+          <div className={ styles.cards__supplier }>
             {
               suppliers.map(({ id, phone, email, address, city, country, postalCode }) => (
-                <div key={ id }>
-                  <h3>{ id }</h3>
-                  <p>Phone: { phone }</p>
-                  <p>Email: { email }</p>
-                  <p>Address: { address }</p>
-                  <p>City: { city }</p>
-                  <p>Country: { country }</p>
-                  <p>Postal Code: { postalCode }</p>
-                  <Link to={`/suppliers/${ id }`}>
+                <div key={ id } className={ styles.card }>
+                  <h3 className={ styles.id__supplier }>{ id }</h3>
+                  <p className={ styles.phone__supplier }>Phone: { phone }</p>
+                  <p className={ styles.email__supplier }>Email: { email }</p>
+                  <p className={ styles.address__supplier }>Address: { address }</p>
+                  <p className={ styles.city__supplier }>City: { city }</p>
+                  <p className={ styles.country__supplier }>Country: { country }</p>
+                  <p className={ styles.postalCode__supplier }>Postal Code: { postalCode }</p>
+                  <Link to={`/suppliers/${ id }`} className={ styles.edit__btn }>
                     Edit Supplier
                   </Link>
                 </div>

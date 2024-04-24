@@ -1,0 +1,92 @@
+/* SalesPage.module.css */
+
+/* Estilos para el contenedor principal */
+.sales__container {
+  padding: 20px;
+}
+
+.total_cont {
+  text-align: center;
+}
+
+.total__sales {
+  font-size: 24px;
+  font-family: var(--quicksand);
+  color: #333;
+}
+
+.title__page {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cards__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container__link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn__new {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn__new:hover {
+  background-color: #218838;
+}
+
+.cards__sale {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.id__sale,
+.date__sale,
+.client__sale,
+.total__sale {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.id__sale {
+  font-weight: bold;
+}
+
+.btn__edit {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn__edit:hover {
+  background-color: #0056b3;
+}

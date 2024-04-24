@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCheckAuth } from "../../hooks";
 
-import './PharmaceuticalLayout.css';
+import styles from './PharmaceuticalLayout.module.css';
 
 interface NavItem {
   path: string;
@@ -28,34 +28,36 @@ export const PharmaceuticalLayout: FC<PharmaceuticalLayoutProps> = ({ children }
 
   const logout = () => {
     handleLogout();
-    navigate('/auth/sign-in')
+    navigate('/auth/sign-in');
   };
 
   return (
-    <div>
-      <nav>
-        <ul>
-          {
-            navItems.map(({ path, text }) => (
-              <li key={ path }>
-                <Link to={ path }>{ text }</Link>
-              </li>
-            ))
-          }
-          <li>
-            <button 
-              onClick={ logout }
-              disabled={ isLoading } >
-                Logout
-            </button>
-          </li>
-        </ul>
-      </nav>
+    <>
+      <div className={ styles.pharma__container }>
+        <nav className={ styles.pharma__nav }>
+          <ul className={ styles.nav__ul }>
+            {
+              navItems.map(({ path, text }) => (
+                <li key={ path } className={ styles.nav__ul__opt }>
+                  <Link to={ path } className={ styles.nav__ul__link }>{ text }</Link>
+                </li>
+              ))
+            }
+            <li className={ styles.container__btn }>
+              <button 
+                onClick={ logout }
+                className={ styles.btn }
+                disabled={ isLoading } >
+                  Logout
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-      <div>
+      <div className={ styles.pharma__content }>
         { children }
       </div>
-    
-    </div>
+    </>
   );
 }

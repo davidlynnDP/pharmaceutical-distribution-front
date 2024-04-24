@@ -7,7 +7,7 @@ import { useCheckInformation } from "../../../hooks";
 import { Supplier } from "../../../domain/models";
 import { useEffect, useState } from "react";
 
-import './SupplierDetailsPage.css';
+import styles from './SupplierDetailsPage.module.css';
 
 interface Values {
   phone: string;
@@ -20,7 +20,7 @@ interface Values {
 
 
 const SupplierNotFound = () => {
-  return <div>Supplier not found!</div>;
+  return <div className={ styles.supplier__not__found }>Supplier not found!</div>;
 };
 
 export const SupplierDetailsPage = () => {
@@ -99,106 +99,114 @@ export const SupplierDetailsPage = () => {
 
   return (
     <PharmaceuticalLayout>
-      <div>
-        <h2>Edit Supplier</h2>
-        <div>
-          <p>Editing Supplier:</p>
-          <p>ID: { supplier.id }</p>
-          <p>Phone: { supplier.phone }</p>
-          <p>Email: { supplier.email }</p>
-          <p>Address: { supplier.address }</p>
-          <p>City: { supplier.city }</p>
-          <p>Country: { supplier.country }</p>
-          <p>Postal Code: { supplier.postalCode }</p>
+      <div className={ styles.edit__supplier__container }>
+        <h2 className={ styles.title__page }>Edit Supplier</h2>
+        <div className={ styles.info__supplier }>
+          <p className={ styles.title__editing }>Editing Supplier:</p>
+          <p className={ styles.id__supplier }>ID: { supplier.id }</p>
+          <p className={ styles.phone__supplier }>Phone: { supplier.phone }</p>
+          <p className={ styles.email__supplier }>Email: { supplier.email }</p>
+          <p className={ styles.address__supplier }>Address: { supplier.address }</p>
+          <p className={ styles.city__supplier }>City: { supplier.city }</p>
+          <p className={ styles.country__supplier }>Country: { supplier.country }</p>
+          <p className={ styles.postalCode__supplier }>Postal Code: { supplier.postalCode }</p>
         </div>
-        <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="phone">Phone:</label>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
+          <div className={ styles.container__input }>
+            <label htmlFor="phone" className={ styles.input__name }>Phone:</label>
             <input
               type="text"
-              id="phone"
+              id="phone" 
+              className={ styles.input__text }
               {...getFieldProps("phone")}
             />
             {
               touched.phone && errors.phone && (
-                <div>{ errors.phone }</div>
+                <div className={ styles.input__error }>{ errors.phone }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="email" className={ styles.input__name }>Email:</label>
             <input
               type="email"
-              id="email"
+              id="email" 
+              className={ styles.input__text }
               {...getFieldProps("email")}
             />
             {
               touched.email && errors.email && (
-                <div>{ errors.email }</div>
+                <div className={ styles.input__error }>{ errors.email }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="address">Address:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="address" className={ styles.input__name }>Address:</label>
             <input
               type="text"
-              id="address"
+              id="address" 
+              className={ styles.input__text }
               {...getFieldProps("address")}
             />
             {
               touched.address && errors.address && (
-                <div>{ errors.address }</div>
+                <div className={ styles.input__error }>{ errors.address }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="city">City:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="city" className={ styles.input__name }>City:</label>
             <input
               type="text"
-              id="city"
+              id="city" 
+              className={ styles.input__text }
               {...getFieldProps("city")}
             />
             {
               touched.city && errors.city && (
-                <div>{ errors.city }</div>
+                <div className={ styles.input__error }>{ errors.city }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="country">Country:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="country" className={ styles.input__name }>Country:</label>
             <input
               type="text"
-              id="country"
+              id="country" 
+              className={ styles.input__text }
               {...getFieldProps("country")}
             />
             {
               touched.country && errors.country && (
-                <div>{ errors.country }</div>
+                <div className={ styles.input__error }>{ errors.country }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="postalCode">Postal Code:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="postalCode" className={ styles.input__name }>Postal Code:</label>
             <input
               type="text"
-              id="postalCode"
+              id="postalCode" 
+              className={ styles.input__text }
               {...getFieldProps("postalCode")}
             />
             {
               touched.postalCode && errors.postalCode && (
-                <div>{ errors.postalCode }</div>
+                <div className={ styles.input__error }>{ errors.postalCode }</div>
               )
             }
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button
               type="submit"
+              className={ styles.btn }
               disabled={ isLoading }
             >
               Update Supplier
             </button>
             <button
               type="button"
+              className={ styles.btn }
               onClick={ onDelete }
               disabled={ isLoading }
             >
@@ -206,7 +214,7 @@ export const SupplierDetailsPage = () => {
             </button>
           </div>
         </form>
-        <Link to="/suppliers">
+        <Link to="/suppliers" className={ styles.back__suppliers }>
           Back to Suppliers
         </Link>
       </div>

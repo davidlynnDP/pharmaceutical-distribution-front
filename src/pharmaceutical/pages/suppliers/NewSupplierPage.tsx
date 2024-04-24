@@ -5,8 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useCheckInformation } from "../../../hooks";
 import { PharmaceuticalLayout } from "../../layout"
 
-
-import './NewSupplierPage.css';
+import styles from './NewSupplierPage.module.css';
 
 
 interface Values {
@@ -64,96 +63,103 @@ export const NewSupplierPage = () => {
   
   return (
     <PharmaceuticalLayout>
-      <div>
-        <h2>New Supplier</h2>
+      <div className={ styles.new__supplier__page }>
+        <h2 className={ styles.title__page }>New Supplier</h2>
         <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="phone">Phone:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="phone" className={ styles.input__name }>Phone:</label>
             <input
               type="text"
-              id="phone"
+              id="phone" 
+              className={ styles.input__text }
               {...getFieldProps("phone")}
             />
             {
               touched.phone && errors.phone && (
-                <div>{ errors.phone }</div>
+                <div className={ styles.input__error }>{ errors.phone }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="email" className={ styles.input__name }>Email:</label>
             <input
               type="email"
-              id="email"
+              id="email" 
+              className={ styles.input__text }
               {...getFieldProps("email")}
             />
             {
               touched.email && errors.email && (
-                <div>{ errors.email }</div>
+                <div className={ styles.input__error }>{ errors.email }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="address">Address:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="address" className={ styles.input__name }>Address:</label>
             <input
               type="text"
-              id="address"
+              id="address" 
+              className={ styles.input__text }
               {...getFieldProps("address")}
             />
             {
               touched.address && errors.address && (
-                <div>{ errors.address }</div>
+                <div className={ styles.input__error }>{ errors.address }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="city">City:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="city" className={ styles.input__name }>City:</label>
             <input
               type="text"
               id="city"
+              className={ styles.input__text }
               {...getFieldProps("city")}
             />
             {
               touched.city && errors.city && (
-                <div>{ errors.email }</div>
+                <div className={ styles.input__error }>{ errors.email }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="country">Country:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="country" className={ styles.input__name }>Country:</label>
             <input
               type="text"
-              id="country"
+              id="country" 
+              className={ styles.input__text }
               {...getFieldProps("country")}
             />
             {
               touched.country && errors.country && (
-                <div>{ errors.country }</div>
+                <div className={ styles.input__error }>{ errors.country }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="postalCode">Postal Code:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="postalCode" className={ styles.input__name }>Postal Code:</label>
             <input
               type="text"
-              id="postalCode"
+              id="postalCode" className={ styles.input__text }
               {...getFieldProps("postalCode")}
             />
             {
               touched.postalCode && errors.postalCode && (
-                <div>{ errors.postalCode }</div>
+                <div className={ styles.input__error }>{ errors.postalCode }</div>
               )
             }
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button
               type="submit"
+              className={ styles.btn }
               disabled={ isLoading }
             >
               Create Supplier
             </button>
             <button
               type="button"
+              className={ styles.btn }
               onClick={() => resetForm()}
               disabled={ isLoading }
             >
@@ -161,7 +167,7 @@ export const NewSupplierPage = () => {
             </button>
           </div>
         </form>
-        <Link to="/suppliers">
+        <Link to="/suppliers" className={ styles.back__suppliers }>
           Back to Suppliers
         </Link>
       </div>

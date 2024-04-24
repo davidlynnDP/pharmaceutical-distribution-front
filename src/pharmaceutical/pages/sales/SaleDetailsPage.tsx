@@ -5,12 +5,11 @@ import { Sale, SaleDetail } from "../../../domain/models";
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 
-import './SaleDetailsPage.css';
+import styles from './SaleDetailsPage.module.css';
 
 const SaleNotFound = () => {
-  return <div>Sale not found!</div>;
+  return <div className={ styles.not__found }>Sale not found!</div>;
 };
-
 
 export const SaleDetailsPage = () => {
 
@@ -39,52 +38,53 @@ export const SaleDetailsPage = () => {
 
   return (
     <PharmaceuticalLayout>
-      <div>
-        <h2>Sale Details</h2>
-        <div>
-          <strong>Sale ID:</strong> { sale.id }
+      <div className={ styles.sale__details__container }>
+        <h2 className={ styles.title__page }>Sale Details</h2>
+        <div className={ styles.cont__det }>
+          <strong className={ styles.det__sale }>Sale ID:</strong> { sale.id }
         </div>
-        <div>
-          <strong>Sale Date:</strong> { sale.saleDate }
+        <div className={ styles.cont__det }>
+          <strong className={ styles.det__sale }>Sale Date:</strong> { sale.saleDate }
         </div>
-        <div>
-          <strong>Client:</strong> { sale.client.name } ({ sale.client.email })
+        <div className={ styles.cont__det }>
+          <strong className={ styles.det__sale }>Client:</strong> { sale.client.name } ({ sale.client.email })
         </div>
-        <h3>Products:</h3>
+        <h3 className={ styles.title__sale__det }>Products:</h3>
         {
           sale.saleDetails.map((detail) => (
-            <div key={ detail.id }>
-              <div>
-                <strong>Product ID:</strong> { detail.product.id }
+            <div key={ detail.id } className={ styles.card }>
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Product ID:</strong> { detail.product.id }
               </div>
-              <div>
-                <strong>Product Name:</strong> { detail.product.name }
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Product Name:</strong> { detail.product.name }
               </div>
-              <div>
-                <strong>Description:</strong> { detail.product.description }
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Description:</strong> { detail.product.description }
               </div>
-              <div>
-                <strong>Stocks:</strong> { detail.product.stocks }
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Stocks:</strong> { detail.product.stocks }
               </div>
-              <div>
-                <strong>Price:</strong> ${ detail.product.price }
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Price:</strong> ${ detail.product.price }
               </div>
-              <div>
-                <strong>Quantity:</strong> { detail.quantity }
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Quantity:</strong> { detail.quantity }
               </div>
-              <div>
-                <strong>Total:</strong> ${ detail.total }
+              <div className={ styles.cont__det__card }>
+                <strong className={ styles.cont__det__info }>Total:</strong> ${ detail.total }
               </div>
             </div>
           ))
         }
-        <div>
-          <h3>Total Sale Amount:</h3>
-          <div>
-            <strong>Total:</strong> ${ calculateTotalSingleSale( sale.saleDetails ) }
+        <div className={ styles.total__cont }>
+          <h3 className={ styles.total__amount_title }>Total Sale Amount:</h3>
+          <div className={ styles.total__amount_cont }>
+            <strong className={ styles.total__amount }>Total: </strong>
+            <p className={ styles.total__amount__p }>  ${ calculateTotalSingleSale( sale.saleDetails ) }</p>
           </div>
         </div>
-        <Link to="/sales">
+        <Link to="/sales" className={ styles.btn__back_sale }>
           Back to Sales
         </Link>
       </div>

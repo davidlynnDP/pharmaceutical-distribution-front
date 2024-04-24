@@ -1,0 +1,92 @@
+/* SaleDetailsPage.module.css */
+
+/* Estilos para el contenedor principal */
+.sale__details__container {
+  padding: 20px;
+}
+
+.title__page {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cont__det {
+  margin-bottom: 10px;
+}
+
+.det__sale {
+  font-weight: bold;
+  color: #333;
+}
+
+.title__sale__det {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Estilos para las tarjetas de detalles de venta */
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cont__det__card {
+  margin-bottom: 10px;
+}
+
+.cont__det__info {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Estilos para el contenedor de total de venta */
+.total__cont {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.total__amount_title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.total__amount_cont {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.total__amount {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.total__amount__p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Estilo para el botón de volver */
+.btn__back_sale {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn__back_sale:hover {
+  background-color: #0056b3;
+}

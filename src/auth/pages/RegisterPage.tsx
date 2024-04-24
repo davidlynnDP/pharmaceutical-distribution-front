@@ -3,9 +3,9 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthLayout } from "../layout"
-
-import './RegisterPage.css';
 import { useCheckAuth } from "../../hooks";
+
+import styles from './RegisterPage.module.css';
 
 
 export const RegisterPage = () => {
@@ -40,63 +40,69 @@ export const RegisterPage = () => {
   
   return (
     <AuthLayout>
-      <div>
-        <h2>Registro</h2>
-        <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="username">Username:</label>
+      <div className={ styles.register__container }>
+        <h2 className={ styles.title__page }>Registro</h2>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
+          <div className={ styles.container__input }>
+            <label htmlFor="username" className={ styles.input__name }>Username:</label>
             <input 
               type="text" 
               id="username" 
+              className={ styles.input__text } 
               {...getFieldProps('username')} 
             />
-            { touched.username && errors.username ? <div>{ errors.username }</div> : null }
+            { touched.username && errors.username ? <div className={ styles.input__error }>{ errors.username }</div> : null }
           </div>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="email" className={ styles.input__name }>Email:</label>
             <input 
               type="email" 
-              id="email" 
+              id="email"  
+              className={ styles.input__text }
               {...getFieldProps('email')} 
             />
-            { touched.email && errors.email ? <div>{ errors.email }</div> : null }
+            { touched.email && errors.email ? <div className={ styles.input__error }>{ errors.email }</div> : null }
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="password" className={ styles.input__name }>Password:</label>
             <input 
               type="password" 
               id="password" 
+              className={ styles.input__text }
               {...getFieldProps('password')} 
             />
-            { touched.password && errors.password ? <div>{ errors.password }</div> : null }
+            { touched.password && errors.password ? <div className={ styles.input__error }>{ errors.password }</div> : null }
           </div>
-          <div>
-            <label htmlFor="confirmPassword">Confirmar Password:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="confirmPassword" className={ styles.input__name }>Confirmar Password:</label>
             <input 
               type="password" 
-              id="confirmPassword" 
+              id="confirmPassword"
+              className={ styles.input__text } 
               {...getFieldProps('confirmPassword')}
             />
-            { touched.confirmPassword && errors.confirmPassword ? <div>{ errors.confirmPassword }</div> : null }
+            { touched.confirmPassword && errors.confirmPassword ? <div className={ styles.input__error }>{ errors.confirmPassword }</div> : null }
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button 
               type="submit" 
+              className={ styles.btn }
               disabled={ isLoading } >
               Registrarse
             </button>
             <button 
-            type="button" 
-            onClick={() => resetForm()} 
-            disabled={ isLoading } >
-              Limpiar
+              className={ styles.btn }
+              type="button" 
+              onClick={() => resetForm()} 
+              disabled={ isLoading } >
+                Limpiar
             </button>
           </div>
         </form>
         
-        <div>
-          <p>¿Ya tienes una cuenta? 
-            <Link to="/auth/login">Inicia sesión aquí</Link>
+        <div className={ styles.link__container }>
+          <p className={ styles.paragraph__text }>¿Ya tienes una cuenta? 
+            <Link to="/auth/login" className={ styles.paragraph__text__link }>Inicia sesión aquí</Link>
           </p>
         </div>
       </div>

@@ -1,0 +1,112 @@
+/* RegisterPage.module.css */
+
+.register__container {
+    display: grid;
+    place-content: center;
+    width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title__page {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+  
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container__input {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input__name {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .input__text {
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input__text:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .input__error {
+    font-size: 14px;
+    color: #ff0000;
+    margin-top: 5px;
+  }
+  
+  .btn__container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 115px;
+    max-width: 150px;
+  }
+  
+  .btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .link__container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .paragraph__text {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .paragraph__text__link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 5px;
+  }
+  
+  .paragraph__text__link:hover {
+    text-decoration: underline;
+  }
+  

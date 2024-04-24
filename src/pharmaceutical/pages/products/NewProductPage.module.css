@@ -1,0 +1,96 @@
+/* NewProductPage.css */
+
+.new__container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title__page {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .container__input {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input__text {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .input__files {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .input__errors {
+    margin-top: 5px;
+    color: #dc3545;
+    font-size: 0.9rem;
+  }
+  
+  .input__select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn__container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn:disabled {
+    background-color: #ccc;
+    color: #333;
+    cursor: not-allowed;
+  }
+  
+
+  .btn__back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .btn__back:hover {
+    background-color: #0056b3;
+  }
+  

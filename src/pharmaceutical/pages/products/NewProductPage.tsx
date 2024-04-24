@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PharmaceuticalLayout } from "../../layout"
 import { useCheckInformation } from "../../../hooks";
 
-import './NewProductPage.css';
+import styles from './NewProductPage.module.css';
 
 //NOTA: únicamente se aceptan imágenes de máximo 4 megabytes y con las extensiones jpg|png|jpeg
 
@@ -122,102 +122,110 @@ export const NewProductPage = () => {
   
   return (
     <PharmaceuticalLayout>
-      <div>
-        <h2>New Product</h2>
-        <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="name">Name:</label>
+      <div className={ styles.new__container }>
+        <h2 className={ styles.title__page }>New Product</h2>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
+          <div className={ styles.container__input }>
+            <label htmlFor="name" className={ styles.input__text }>Name:</label>
             <input
               type="text"
-              id="name"
+              id="name" 
+              className={ styles.input }
               {...getFieldProps("name")}
             />
             {
               touched.name && errors.name && (
-                <div>{ errors.name }</div>
+                <div className={ styles.input__errors }>{ errors.name }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="description">Description:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="description" className={ styles.input__text }>Description:</label>
             <textarea
-              id="description"
+              id="description" 
+              className={ styles.input }
               {...getFieldProps("description")}
             />
             {
               touched.description && errors.description && (
-                <div>{ errors.description }</div>
+                <div className={ styles.input__errors }>{ errors.description }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="stocks">Stocks:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="stocks" className={ styles.input__text }>Stocks:</label>
             <input
               type="text"
-              id="stocks"
+              id="stocks" 
+              className={ styles.input }
               {...getFieldProps("stocks")}
             />
             {
               touched.stocks && errors.stocks && (
-                <div>{ errors.stocks }</div>
+                <div className={ styles.input__errors }>{ errors.stocks }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="price">Price:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="price" className={ styles.input__text }>Price:</label>
             <input
               type="text"
-              id="price"
+              id="price" 
+              className={ styles.input }
               {...getFieldProps("price")}
             />
             {
               touched.price && errors.price && (
-                <div>{ errors.price }</div>
+                <div className={ styles.input__errors }>{ errors.price }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="supplierId">Supplier:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="supplierId" className={ styles.input__text }>Supplier:</label>
             <select 
-              id="supplierId" 
+              id="supplierId"  
+              className={ styles.input__select }
               {...getFieldProps("supplierId")} 
               onChange={ handleSupplierChange }>
-                <option value="">Select Supplier</option>
+                <option value="" className={ styles.select__opt }>Select Supplier</option>
                 {
                   suppliers.map(supplier => (
-                    <option key={ supplier.id } value={ supplier.id }>{ supplier.email }</option>
+                    <option key={ supplier.id } value={ supplier.id } className={ styles.select__opt }>{ supplier.email }</option>
                   ))
                 }
             </select>
             {
               touched.supplierId && errors.supplierId && (
-                <div>{ errors.supplierId }</div>
+                <div className={ styles.input__errors }>{ errors.supplierId }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="files">Images:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="files" className={ styles.input__text }>Images:</label>
             <input
               type="file"
               id="files"
-              multiple
+              multiple 
+              className={ styles.input__files }
               onChange={ handleFileChange }
             />
             {
               touched.files && errors.files && (
-                <div>{ errors.files }</div>
+                <div  className={ styles.input__errors }>{ errors.files }</div>
               )
             }
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button 
               type="submit"
+              className={ styles.btn }
               disabled={ isLoading }
             >
               Create Product
             </button>
             <button 
               type="button" 
+              className={ styles.btn }
               onClick={() => resetForm()}
               disabled={ isLoading }
             >
@@ -225,7 +233,7 @@ export const NewProductPage = () => {
             </button>
           </div>
         </form>
-        <Link to="/products">
+        <Link to="/products" className={ styles.btn__back }>
           Back to Products
         </Link>
       </div>

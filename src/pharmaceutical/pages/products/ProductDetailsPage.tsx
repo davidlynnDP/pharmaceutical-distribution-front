@@ -7,7 +7,7 @@ import { useCheckInformation } from "../../../hooks";
 import { Product } from "../../../domain/models";
 import { useEffect, useState } from "react";
 
-import './ProductDetailsPage.css';
+import styles from './ProductDetailsPage.module.css';
 
 //NOTA: únicamente se aceptan imágenes de máximo 4 megabytes y con las extensiones jpg|png|jpeg
 
@@ -30,7 +30,7 @@ interface Values {
 
 
 const ProductNotFound = () => {
-  return <div>Product not found!</div>;
+  return <div className={ styles.product__not__found }>Product not found!</div>;
 };
 
 export const ProductDetailsPage = () => {
@@ -160,104 +160,120 @@ export const ProductDetailsPage = () => {
 
   return (
     <PharmaceuticalLayout>
-      <div>
-        <div>
-          <h2>Product Details</h2>
-          <div>
-            <strong>ID:</strong> { product.id }
+      <div className={ styles.details__container }>
+        <h2 className={ styles.title__page }>Product Details</h2>
+        <div className={ styles.product__details }>
+          <div className={ styles.product__info }>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>ID:</strong>
+              <span className={ styles.info__value }>{ product.id }</span>
+            </div>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>Name:</strong>
+              <span className={ styles.info__value }>{ product.name }</span>
+            </div>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>Slug:</strong>
+              <span className={ styles.info__value }>{ product.slug }</span>
+            </div>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>Description:</strong>
+              <span className={ styles.info__value }>{ product.description }</span>
+            </div>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>Stocks:</strong>
+              <span className={ styles.info__value }>{ product.stocks }</span>
+            </div>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>Price:</strong>
+              <span className={ styles.info__value }>${ product.price }</span>
+            </div>
+            <div className={ styles.product__info__item }>
+              <strong className={ styles.info__label }>Supplier:</strong>
+              <span className={ styles.info__value }>{ product.supplier.email }</span>
+            </div>
           </div>
-          <div>
-            <strong>Name:</strong> { product.name }
-          </div>
-          <div>
-            <strong>Slug:</strong> { product.slug }
-          </div>
-          <div>
-            <strong>Description:</strong> { product.description }
-          </div>
-          <div>
-            <strong>Stocks:</strong> { product.stocks }
-          </div>
-          <div>
-            <strong>Price:</strong> ${ product.price }
-          </div>
-          <div>
-            <strong>Supplier:</strong> ({ product.supplier.email })
-          </div>
-          <div>
-            <strong>Images:</strong>
-            {
-              product.images.map(({ id, url }) => (
-                <div key={ id }>
-                  <img src={ url } alt={`Image ${ id }`} />
-                </div>
-              ))
-            }
+          <div className={ styles.product__images }>
+            <strong className={ styles.info__label }>Images:</strong>
+            <div className={ styles.image__container }>
+              {
+                product.images.map(({ id, url }) => (
+                  <div key={ id } className={ styles.image__item }>
+                    <img src={ url } alt={`Image ${ id }`} className={ styles.product__image } />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
-        <form onSubmit={ handleSubmit }>
-          <div>
-            <label htmlFor="name">Name:</label>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
+          <div className={ styles.container__input }>
+            <label htmlFor="name" className={ styles.input__text }>Name:</label>
             <input
               type="text"
               id="name"
+              className={ styles.input }
               {...getFieldProps("name")}
             />
             {
               touched.name && errors.name && (
-                <div>{ errors.name }</div>
+                <div className={ styles.input__errors }>{ errors.name }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="description">Description:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="description" className={ styles.input__text }>Description:</label>
             <textarea
-              id="description"
+              id="description" 
+              className={ styles.input }
               {...getFieldProps("description")}
             />
             {
               touched.description && errors.description && (
-                <div>{ errors.description }</div>
+                <div className={ styles.input__errors }>{ errors.description }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="stocks">Stocks:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="stocks" className={ styles.input__text }>Stocks:</label>
             <input
               type="text"
-              id="stocks"
+              id="stocks" 
+              className={ styles.input }
               {...getFieldProps("stocks")}
             />
             {
               touched.stocks && errors.stocks && (
-                <div>{ errors.stocks }</div>
+                <div className={ styles.input__errors }>{ errors.stocks }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="price">Price:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="price" className={ styles.input__text }>Price:</label>
             <input
               type="text"
-              id="price"
+              id="price" 
+              className={ styles.input }
               {...getFieldProps("price")}
             />
             {
               touched.price && errors.price && (
-                <div>{ errors.price }</div>
+                <div className={ styles.input__errors }>{ errors.price }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="supplierId">Supplier:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="supplierId" className={ styles.input__text }>Supplier:</label>
             <select
-              id="supplierId"
+              id="supplierId" 
+              className={ styles.input__select }
               {...getFieldProps("supplierId")}
               onChange={ handleSupplierChange }
             >
-              <option value="">Select Supplier</option>
+              <option value="" className={ styles.opt__select }>Select Supplier</option>
               {
                 suppliers.map(supplier => (
-                  <option key={ supplier.id } value={ supplier.id }>
+                  <option key={ supplier.id } value={ supplier.id } className={ styles.opt__select }>
                     { supplier.email }
                   </option>
                 ))
@@ -265,43 +281,47 @@ export const ProductDetailsPage = () => {
             </select>
             {
               touched.supplierId && errors.supplierId && (
-                <div>{ errors.supplierId }</div>
+                <div className={ styles.input__errors }>{ errors.supplierId }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="files">Images:</label>
+          <div className={ styles.container__input }>
+            <label htmlFor="files" className={ styles.input__text }>Images:</label>
             <input
               type="file"
               id="files"
-              multiple
+              multiple 
+              className={ styles.input__files }
               onChange={ handleFileChange }
             />
             {
               touched.files && errors.files && (
-                <div>{ errors.files }</div>
+                <div className={ styles.input__errors }>{ errors.files }</div>
               )
             }
           </div>
-          <div>
-            <label htmlFor="deletePrevious">
+          <div className={ styles.container__input }>
+            <label htmlFor="deletePrevious" className={ styles.input__text }>
               Delete Previous Images:
               <input
                 type="checkbox"
-                id="deletePrevious"
+                id="deletePrevious"  
+                className={ styles.input__checkbox }
                 {...getFieldProps("deletePrevious")}
               />
             </label>
           </div>
-          <div>
+          <div className={ styles.btn__container }>
             <button
               type="submit"
+              className={ styles.btn }
               disabled={ isLoading }
             >
               Update Product
             </button>
             <button
               type="button"
+              className={ styles.btn }
               onClick={ onDelete }
               disabled={ isLoading }
             >
@@ -309,7 +329,7 @@ export const ProductDetailsPage = () => {
             </button>
           </div>
         </form>
-        <Link to="/products">
+        <Link to="/products" className={ styles.btn__back }>
           Back to Products
         </Link>
       </div>

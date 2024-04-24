@@ -4,7 +4,7 @@ import { PharmaceuticalLayout } from '../../layout'
 import { useEffect, useState } from 'react';
 import { Sale, SaleDetail } from '../../../domain/models';
 
-import './SalesPage.css';
+import styles from './SalesPage.module.css';
 
 
 export const SalesPage = () => {
@@ -39,25 +39,26 @@ export const SalesPage = () => {
   
   return (
     <PharmaceuticalLayout>
-        <div>
-          <div>
-            <div>
-              <h3>Total Sales Value: ${ totalSales }</h3>
+        <div className={ styles.sales__container }>
+          <h2 className={ styles.title__page }>Sales Page</h2>
+          <div className={ styles.total_cont }>
+              <h3 className={ styles.total__sales }>Total Sales Value: ${ totalSales }</h3>
             </div>
-            <div>
-              <Link to="/sales/new" className="create-sale-button">
+          <div className={ styles.cards__container }>
+            <div className={ styles.container__link }>
+              <Link to="/sales/new" className={ styles.btn__new }>
                 Create New Sale
               </Link>
             </div>
-            <div>
+            <div className={ styles.cards__sale }>
               {
                 sales.map(({ id, saleDate, client, saleDetails }) => (
-                <div key={ id }>
-                  <h3>Sale ID: { id }</h3>
-                  <p>Sale Date: { saleDate }</p>
-                  <p>Client: { client.name }</p>
-                  <p>Total: { calculateTotalSingleSale( saleDetails ) }</p>
-                  <Link to={`/sales/${ id }`} >
+                <div key={ id } className={ styles.card }>
+                  <h3 className={ styles.id__sale }>Sale ID: { id }</h3>
+                  <p className={ styles.date__sale }>Sale Date: { saleDate }</p>
+                  <p className={ styles.client__sale }>Client: { client.email }</p>
+                  <p className={ styles.total__sale }>Total: { calculateTotalSingleSale( saleDetails ) }</p>
+                  <Link to={`/sales/${ id }`}  className={ styles.btn__edit }>
                     View Sale Details
                   </Link>
                 </div>
