@@ -16,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 //yarn dev
+//yarn deploy
 
 //docker-compose -f docker-compose.prod.yml build
 //docker-compose -f docker-compose.prod.yml up
