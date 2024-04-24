@@ -73,7 +73,7 @@ export const NewSalePage = () => {
       <div>
         <h2>New Sale</h2>
         <form onSubmit={ handleSubmit }>
-          { values.items.map((item, index) => (
+          { values.items.map((_, index) => (
             <div key={ index }>
               <label htmlFor={`items[${ index }].productId`}>Product:</label>
               <select

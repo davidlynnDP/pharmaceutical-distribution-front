@@ -16,3 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 //yarn dev
+
+//docker-compose -f docker-compose.prod.yml build
+//docker-compose -f docker-compose.prod.yml up
+//docker push dav1dlynn/pharmaceutical-distribution-react-ts:latest
+
+//dav1dlynn/pharmaceutical-distribution-react-ts:latest

@@ -1,0 +1,16 @@
+version: '3'
+
+
+services:
+
+  app:
+    build:
+      context: .
+      target: ${STAGE}
+      dockerfile: Dockerfile
+
+    image: dav1dlynn/pharmaceutical-distribution-react-ts:latest
+    container_name: pharma-react-ts
+    environment:
+      STAGE: ${STAGE}
+      VITE_API_URL: ${VITE_API_URL}
