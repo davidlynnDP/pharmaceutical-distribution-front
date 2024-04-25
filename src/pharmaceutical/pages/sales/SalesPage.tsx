@@ -21,14 +21,20 @@ export const SalesPage = () => {
   const calculateTotal = (salesData: Sale[]): number => {
     let total = 0;
     salesData.forEach((sale) => {
-      sale.saleDetails.forEach((detail) => {
-        total += detail.total;
-      });
+      if (sale.saleDetails) {
+        sale.saleDetails.forEach((detail) => {
+          total += detail.total;
+        });
+      }
     });
     return total;
   };
 
   const calculateTotalSingleSale = (saleDetails: SaleDetail[]): number => {
+
+    if (!saleDetails) {
+      return 0; 
+    }
     let total = 0;
     saleDetails.forEach((detail) => {
       total += detail.total;
@@ -36,7 +42,6 @@ export const SalesPage = () => {
     return total;
   };
 
-  
   return (
     <PharmaceuticalLayout>
         <div className={ styles.sales__container }>
@@ -52,11 +57,11 @@ export const SalesPage = () => {
             </div>
             <div className={ styles.cards__sale }>
               {
-                sales.map(({ id, saleDate, client, saleDetails }) => (
-                <div key={ id } className={ styles.card }>
+                sales.map(({ id, saleDate, client, saleDetails }, index) => (
+                <div key={`${ id }-${ index }`} className={ styles.card }>
                   <h3 className={ styles.id__sale }>Sale ID: { id }</h3>
                   <p className={ styles.date__sale }>Sale Date: { saleDate }</p>
-                  <p className={ styles.client__sale }>Client: { client.email }</p>
+                  <p className={styles.client__sale}>Client: { client ? client.email : 'Unknown' }</p>
                   <p className={ styles.total__sale }>Total: { calculateTotalSingleSale( saleDetails ) }</p>
                   <Link to={`/sales/${ id }`}  className={ styles.btn__edit }>
                     View Sale Details

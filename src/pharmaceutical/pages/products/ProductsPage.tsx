@@ -23,8 +23,8 @@ export const ProductsPage = () => {
                 products.map(({ id, name, description, stocks, price, images }) => (
                   <div key={ id } className={ styles.card }>
                     {
-                      images.length > 0 && (
-                        <img src={ images[0].url } alt={ `Image of ${ name }` } className={ styles.image__product } />
+                      images && images.length > 0 && (
+                        <img src={ images[0].url } alt={`Image of ${ name }`} className={ styles.image__product } />
                       )
                     }
                     <h3 className={ styles.name__product }>{ name }</h3>

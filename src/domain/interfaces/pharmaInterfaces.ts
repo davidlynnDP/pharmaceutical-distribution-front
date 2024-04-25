@@ -46,16 +46,16 @@ export interface CreateProductQuery {
 }
 
 export interface UpdateProductParams {
-    name?: string;
-    description?: string;
-    stocks?: number;
-    price?: number;
-    files?: FileList; //jpg|png|jpeg
+    name: string;
+    description: string;
+    stocks: number;
+    price: number;
+    files: FileList; //jpg|png|jpeg
 }
 
 export interface UpdateProductQuery {
-    deletePrevious?: boolean;
-    supplier?: string;
+    deletePrevious: boolean;
+    supplier: string;
 }
 
 

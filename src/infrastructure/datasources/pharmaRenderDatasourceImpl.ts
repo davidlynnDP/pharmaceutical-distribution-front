@@ -175,16 +175,24 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
     async createProduct(createProductParams: CreateProductParams, createProductQuery: CreateProductQuery): Promise<Product> {
 
         const { description, files, name, price, stocks } = createProductParams;
+        const length = files.length;
 
         const { supplier } = createProductQuery;
 
         try {
-            const response = await pharmaApi.post<Product>(`/products/create?supplier=${ supplier }`, {
-                description, 
-                files, 
-                name, 
-                price, 
-                stocks
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('stocks', stocks.toString());
+            formData.append('price', price.toString());
+            for (let i = 0; i < length; i++) {
+                formData.append('files', files[i]);
+            }
+    
+            const response = await pharmaApi.post<Product>(`/products/create?supplier=${ supplier }`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
             });
             
             return response.data;
@@ -228,19 +236,25 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
     async updateProduct(id: string, updateProductParams: UpdateProductParams, updateProductQuery: UpdateProductQuery): Promise<Product> {
 
         const { description, files, name, price, stocks } = updateProductParams;
+        const length = files.length;
 
         const { deletePrevious = false, supplier } = updateProductQuery;
         const queryParameters = `supplier=${ supplier }&deletePrevious=${ deletePrevious }`;
 
         try {
-            const response = await pharmaApi.patch<Product>(`/products/${ id }?${ queryParameters }`, {
-              description,
-              files,
-              name,
-              price,
-              stocks,
-              deletePrevious,
-              supplier,
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('price', price.toString());
+            formData.append('stocks', stocks.toString());
+            for (let i = 0; i < length; i++) {
+                formData.append('files', files[i]);
+            }
+
+            const response = await pharmaApi.patch<Product>(`/products/${ id }?${ queryParameters }`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
             });
             
             return response.data;
@@ -251,6 +265,8 @@ export class PharmaRenderDatasourceImpl implements PharmaDataSource {
     }
 
     async deleteProduct(id: string): Promise<void> {
+
+        console.log( id );
         try {
             await pharmaApi.delete(`/products/${ id }`);
           } catch (error) {
